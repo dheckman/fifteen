@@ -10,13 +10,17 @@ class Player
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
     @hand << @num
+    check_hand(@player)
   end
   def check_hand(player)
-    # player.hand.include? @numbers
-      @numbers.each do |x|
-        @numbers.delete_at()
+    if player.hand.include? @numbers
+      @numbers.each do
+        @numbers.delete(num)
         puts @numbers
       end
+    else
+      return nil
+    end
   end
   def hand_total
     @hand.inject(:+)

@@ -1,6 +1,4 @@
-
-require "player"
-
+require_relative "player"
 
 class Fifteen
   attr_accessor :player, :numbers
