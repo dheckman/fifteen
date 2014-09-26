@@ -13,11 +13,9 @@ class Player
     check_hand(@player)
   end
   def check_hand(player)
-    if player.hand.include? @numbers
-      @numbers.each do
-        @numbers.delete(num)
+    if @hand.include? @numbers
+        @numbers.delete(@num)
         puts @numbers
-      end
     else
       return nil
     end
