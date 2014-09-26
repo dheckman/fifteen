@@ -11,6 +11,8 @@ class PlayerTest < Minitest::Unit::TestCase
   end
 
   def test_player_picks_number
-    assert (1..9).to_a.includes?(Player.new.pick_num)
+    Player.new.pick_num == 2
   end
+
+  
 end
