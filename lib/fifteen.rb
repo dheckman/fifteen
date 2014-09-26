@@ -10,13 +10,12 @@ class Player
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
     @hand << @num
+    check_hand(@player)
   end
   def check_hand(player)
-    # player.hand.include? @numbers
-      @numbers.each do |x|
-        @numbers.delete_at()
-        puts @numbers
-      end
+    if @hand.include? @numbers
+      @numbers.delete(@num)
+    end
   end
   def hand_total
     @hand.inject(:+)
@@ -30,7 +29,7 @@ class Fifteen
     puts "Okay #{@name}, let's get started!"
     @player = Player.new
     @computer = Player.new
-    @numbers = [1,2,3,4,5,6,7,8,9]
+    @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     start
   end
   def start
@@ -40,7 +39,7 @@ class Fifteen
       if @player_answer == @heads_or_tails
         puts "You win!"
         @player.pick_num
-        check_hand(@player)
+        # check_hand(@player)
       else
         puts "YOU LOSE. Computer goes first."
         @computer.hand << @numbers.sample
