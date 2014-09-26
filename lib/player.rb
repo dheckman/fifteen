@@ -1,26 +1,27 @@
 class Player
   attr_accessor
-  def initialize
+  def initialize()
     @hand = []
+
   end
   def hand
     @hand
   end
-  def pick_num
+  def pick_num()
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
     @hand << @num
     check_hand(@player)
+    return @num
   end
   def check_hand(player)
-    if @hand.include? @numbers
-        @numbers.delete(@num)
-        puts @numbers
+    if @hand != nil
+      hand_total(@player)
     else
-      return nil
+      return 0
     end
   end
-  def hand_total
-    @hand.inject(:+)
+  def hand_total(player)
+    puts @hand.inject(:+)
   end
 end

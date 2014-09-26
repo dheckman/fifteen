@@ -1,14 +1,14 @@
 require_relative "player"
 
 class Fifteen
-  attr_accessor :player, :numbers
+  attr_accessor :player
   def initialize
     puts "Hello! What is your name?"
     @name = gets.chomp.capitalize
     puts "Okay #{@name}, let's get started!"
     @player = Player.new
     @computer = Player.new
-    @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @numbers = [1,2,3,4,5,6,7,8,9]
     start
   end
   def start
@@ -18,7 +18,6 @@ class Fifteen
       if @player_answer == @heads_or_tails
         puts "You win!"
         @player.pick_num
-        # check_hand(@player)
       else
         puts "YOU LOSE. Computer goes first."
         @computer.hand << @numbers.sample
