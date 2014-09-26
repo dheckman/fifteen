@@ -25,11 +25,11 @@ class Fifteen
       end
   end
   def check_hands
-    if @hand.include? @numbers
-      @numbers.delete(@num)
-    else
-      puts "waaaa"
-    end
+    puts @hand
+    #   @numbers.delete(@num)
+    # else
+    #   puts "waaaa"
+
   end
   def win(hand)
     #if player or computer has at least three cards that total exactly 15
