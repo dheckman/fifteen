@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :hand
+  attr_accessor
   def initialize
     @hand = []
   end
@@ -9,53 +9,50 @@ class Player
   def pick_num
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
-  end
-  def add_to_hand
     @hand << @num
   end
+  def check_hand(player)
+    # player.hand.include? @numbers
+      @numbers.each do |x|
+        @numbers.delete_at()
+        puts @numbers
+      end
+  end
   def hand_total
-    @hand_total = @hand.inject{|sum,x| sum + x }
+    @hand.inject(:+)
   end
 end
-class Fifteen < Player
-  attr_accessor :player
+class Fifteen
+  attr_accessor :player, :numbers
   def initialize
-    @player = Player.new
-    @computer = Player.new
-    @numbers = [1,2,3,4,5,6,7,8,9]
-    get_name
-  end
-  def player_cards
-    @player.hand
-  end
-  def computer_cards
-    @computer.hand
-  end
-  def get_name
     puts "Hello! What is your name?"
     @name = gets.chomp.capitalize
     puts "Okay #{@name}, let's get started!"
+    @player = Player.new
+    @computer = Player.new
+    @numbers = [1,2,3,4,5,6,7,8,9]
     start
   end
   def start
-    @heads_or_tails = ["heads","tails"]
+    @heads_or_tails = ["heads","tails"].sample
     puts "Heads or tails?"
     @player_answer = gets.chomp.downcase
-      if @player_answer == @heads_or_tails.sample
+      if @player_answer == @heads_or_tails
         puts "You win!"
         @player.pick_num
+        check_hand(@player)
       else
         puts "YOU LOSE. Computer goes first."
         @computer.hand << @numbers.sample
-        puts "The computer chose a(n) #{@computer.hand.pop}."
-        puts @computer.total_total
+        puts "The computer chose a(n) #{@computer.hand}."
       end
   end
-
+  def win(hand)
+    #if player or computer has at least three cards that total exactly 15
+  end
 end
 
 
 
 
 me = Fifteen.new
-me
