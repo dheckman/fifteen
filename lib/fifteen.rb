@@ -24,8 +24,8 @@ class Fifteen
         puts "The computer chose a(n) #{@computer.hand}."
       end
   end
-  def check_hands(player)
-    if @player.hand.include? @numbers
+  def check_hands
+    if @hand.include? @numbers
       @numbers.delete(@num)
     else
       puts "waaaa"

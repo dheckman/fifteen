@@ -14,15 +14,14 @@ class Player
     check_hand(@player)
     return @num
   end
-  def check_hand(player)
+  def check_hand
     if @hand != nil
-      hand_total(@player)
+      hand_total
     else
       return 0
     end
   end
-  def hand_total(player)
+  def hand_total
     puts @hand.inject(:+)
-    check_hands(@player)
   end
 end
