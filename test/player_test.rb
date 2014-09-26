@@ -14,5 +14,13 @@ class PlayerTest < Minitest::Unit::TestCase
     Player.new.pick_num == 2
   end
 
-
+  def test_check_hand
+    p = Player.new
+    orig = p.check_hand(nil)
+    p.pick_num
+    updated = p.check_hand(nil)
+    puts orig
+    puts updated
+    assert updated != orig
+  end
 end
