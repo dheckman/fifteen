@@ -1,0 +1,8 @@
+require "minitest/autorun"
+require "fifteen"
+
+class FifteenTest < Minitest::Unit::TestCase
+  def test_fifteen_initialize
+#    assert Player.new
+  end
+end
