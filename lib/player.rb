@@ -11,7 +11,7 @@ class Player
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
     @hand << @num
-    check_hand(@player)
+    check_hand
     return @num
   end
   def check_hand
