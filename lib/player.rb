@@ -23,5 +23,6 @@ class Player
   end
   def hand_total(player)
     puts @hand.inject(:+)
+    check_hands(@player)
   end
 end

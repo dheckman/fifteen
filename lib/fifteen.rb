@@ -24,6 +24,13 @@ class Fifteen
         puts "The computer chose a(n) #{@computer.hand}."
       end
   end
+  def check_hands(player)
+    if @player.hand.include? @numbers
+      @numbers.delete(@num)
+    else
+      puts "waaaa"
+    end
+  end
   def win(hand)
     #if player or computer has at least three cards that total exactly 15
   end
