@@ -5,7 +5,7 @@ class Player
   end
 end
 class Fifteen
-  attr_accessor :player, :numbers
+  attr_accessor :player, :numbers, :hand
   def initialize
     @player = Player.new
     @computer = Player.new
