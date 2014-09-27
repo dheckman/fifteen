@@ -1,0 +1,49 @@
+require_relative "player"
+
+class Fifteen
+  attr_accessor :player
+  def initialize
+    @player = Player.new
+    @computer = Player.new
+    @numbers = [1,2,3,4,5,6,7,8,9]
+#    start  <-GP removed this.  we explicitly call start later
+  end
+
+  def get_name # <-GP new method pulled out of initialize b/c
+               # want to be able to instantiate object w/o immediately starting
+    puts "Hello! What is your name?"
+    @name = 'danielle'# FIXME disabled for debugging gets.chomp.capitalize
+    puts "Okay #{@name}, let's get started!"
+  end
+
+  def start
+    get_name
+    @heads_or_tails = ["heads","tails"].sample
+    puts "Heads or tails?"
+    @player_answer = "tails" # FIXME disabled for debugging gets.chomp.downcase
+      if @player_answer == @heads_or_tails
+        puts "You win!"
+        @player.pick_num # <-GP remember to delete the number the player took from the @numbers array
+      else
+        puts "YOU LOSE. Computer goes first."
+        @computer.hand << @numbers.sample  # <-GP remember to delete the number the computer took from the @numbers array
+        puts "The computer chose a(n) #{@computer.hand}."
+        puts @computer.hand
+      end
+  end
+  # def check_hands
+  #   puts @hand
+    #   @numbers.delete(@num)
+    # else
+    #   puts "waaaa"
+  # end
+  def win(hand)
+    #if player or computer has at least three cards that total exactly 15
+  end
+end
+
+
+
+
+me = Fifteen.new
+me.start # <-GP added to start game

@@ -1,0 +1,29 @@
+class Player
+  attr_accessor :hand
+
+  def initialize()
+    @hand = []
+  end
+
+  # def hand
+  #   @hand # <-GP attr_accessor above makes this method unnecessary
+  # end
+
+  def pick_num()
+    puts "Pick a number between 1 and 9"
+    num = rand(1..9) # FIXME rand for dev.  return to user for release.  gets.chomp.to_i # <-GP num not used outside method, instance var not needed
+    @hand << num
+    return num
+  end
+
+  def check_hand  # <-GP I find this method name a little ambiguous
+    if @hand != nil
+      return @hand.inject(:+).to_i # <-GP added explicit return; moved out of func
+    else
+      return 0
+    end
+  end
+  # def hand_total  <- GP rolled this method into check hand above
+  #   puts @hand.inject(:+)
+  # end
+end
