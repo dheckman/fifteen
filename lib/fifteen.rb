@@ -1,18 +1,7 @@
-#require_relative "player"
 class Player
-  attr_accessor :num, :hand
+  attr_accessor :hand
   def initialize()
     @hand = []
-  end
-  def pick_num(player)
-    puts "Pick a number between 1 and 9"
-    @num = gets.chomp.to_i
-    @hand << @num
-    if @hand != nil
-     return @hand.inject(:+).to_i
-    else
-      return 0
-    end
   end
 end
 class Fifteen
@@ -33,23 +22,23 @@ class Fifteen
     heads_or_tails = ["heads","tails"].sample
     puts "Heads or tails?"
     player_answer = gets.chomp.downcase
-      if player_answer == heads_or_tails
-        puts "You win!"
-        run
-      else
-        puts "YOU LOSE. Computer goes first."
-        computer_turn
-        run
-      end
+    if player_answer == heads_or_tails
+      puts "You win!"
+      run
+    else
+      puts "YOU LOSE. Computer goes first."
+      computer_turn
+      run
+    end
   end
   def sum(array)
     array.inject{|sum,x| sum + x}
   end
   def pick_num
-      puts "Pick a number between 1 and 9"
-      @num = gets.chomp.to_i
-      @player.hand << @num
-      @numbers.delete(@num)
+    puts "Pick a number between 1 and 9"
+    @num = gets.chomp.to_i
+    @player.hand << @num
+    @numbers.delete(@num)
     puts "You have the following numbers: #{@player.hand}. The remaining numbers are #{@numbers}."
   end
   def computer_turn
@@ -57,23 +46,17 @@ class Fifteen
     @computer.hand << @computer_choice
     @numbers.delete(@computer_choice)
     puts "The computer chose a(n) #{@computer_choice}. Computer's numbers are: #{@computer.hand}. The remaining numbers are #{@numbers}"
-
   end
   def run
-    pick_num
-    computer_turn
-    pick_num
-    computer_turn
-    computer_win?
-    pick_num
-    player_win?
-    computer_turn
-    computer_win?
-    pick_num
-    player_win?
-    computer_turn
-    computer_win?
-    if @numbers.empty?
+    while !@numbers.to_a.empty?
+      pick_num
+      player_win?
+      computer_turn
+      # pick_num
+      # computer_turn
+      computer_win?
+    end
+    if @numbers.to_a.empty?
       puts "Game over, out of numbers! \n Play again?"
       answer = gets.chomp.downcase
       if answer == "yes"
@@ -82,7 +65,6 @@ class Fifteen
         puts "BYEEEEEE."
       end
     end
-    pick_num
   end
   def computer_win?
     c = @computer.hand.combination(3).to_a
