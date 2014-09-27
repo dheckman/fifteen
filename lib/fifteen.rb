@@ -5,7 +5,7 @@ class Player
   end
 end
 class Fifteen
-  attr_accessor :player, :numbers, :hand
+  attr_accessor
   def initialize
     @player = Player.new
     @computer = Player.new
@@ -37,9 +37,14 @@ class Fifteen
   def pick_num
     puts "Pick a number between 1 and 9"
     @num = gets.chomp.to_i
-    @player.hand << @num
-    @numbers.delete(@num)
-    puts "You have the following numbers: #{@player.hand}. The remaining numbers are #{@numbers}."
+    if @numbers.include?(@num)
+      @player.hand << @num
+      @numbers.delete(@num)
+      puts "You have the following numbers: #{@player.hand}. The remaining numbers are #{@numbers}."
+    else
+      puts "This number doesn't exist. Choose again."
+      pick_num
+    end
   end
   def computer_turn
     @computer_choice = @numbers.sample
@@ -52,8 +57,6 @@ class Fifteen
       pick_num
       player_win?
       computer_turn
-      # pick_num
-      # computer_turn
       computer_win?
     end
     if @numbers.to_a.empty?
